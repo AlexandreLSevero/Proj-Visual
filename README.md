@@ -1,13 +1,4 @@
 # Proj1 — Processamento de Imagens (Computação Visual)
-
-Universidade Presbiteriana Mackenzie — Ciência da Computação — Computação Visual — Prof. André Kishimoto
-
-> **Nota do grupo:** esta versão do código foi gerada como ponto de partida funcional para a Etapa 2,
-> cobrindo os itens obrigatórios do enunciado. Ela foi compilada e testada (inclusive com cliques nos
-> botões e teclas simuladas em ambiente headless) antes de entrar no repositório, mas o grupo deve
-> revisar o código, ajustar o que achar necessário e **preencher as seções marcadas abaixo** (integrantes,
-> contribuições) com as informações reais antes da entrega final.
-
 ## O que é o projeto
 
 Um programa de linha de comando com interface gráfica (SDL3) que:
@@ -156,13 +147,8 @@ manualmente para os includes/libs, sem depender de caminhos fixos de uma única 
 ## Integrantes e contribuições
 
 | Nome completo     | RA       | Contribuições |
-|-------------------|----------|----------------|
-| Alexandre Luppi   | 10419724 | *(preencher)* |
-| Enrico Spanier    | 10419775 | *(preencher)* |
-| Guilherme Vecchi  | 10418517 | *(preencher)* |
-| Matteo Porcare    | 10418276 | *(preencher)* |
-
-*(Atualizar esta tabela com o que cada integrante efetivamente implementou/revisou, para atender ao
-critério de "Repositório com atualizações significativas e constantes... com a participação de todos
-os integrantes do grupo" da Tabela 1 do enunciado — ou seja, façam commits próprios ao dividir o
-trabalho, em vez de um único commit grande.)*
+|-------------------|----------|---------------|
+| Alexandre Luppi   | 10419724 | Teste do código no ambiente Windows, revisão da documentação e revisão do relatório de analise final |
+| Enrico Spanier    | 10419775 | construção do código do projeto e teste em ambiente linux |
+| Guilherme Vecchi  | 10418517 | estruturamento lógico das funções do projeto  |
+| Matteo Porcare    | 10418276 | revisão e documentação do código |
