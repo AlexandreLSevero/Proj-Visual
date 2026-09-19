@@ -1,11 +1,10 @@
 /*
- * image.h
- *
  * Carregamento de imagens (via SDL_image) e conversão para escala de
- * cinza (Item 1 e Item 2 do enunciado). Mantém, além da imagem original
+ * cinza (Item 1 e Item 2 do descritivo do projeto). Mantém, além da imagem original
  * carregada, o buffer de intensidades em escala de cinza que serve de
  * base para as demais operações (histograma, equalização).
  */
+
 #ifndef PROJ_VISUAL_IMAGE_H
 #define PROJ_VISUAL_IMAGE_H
 
@@ -17,11 +16,11 @@ typedef struct {
     int width;
     int height;
 
-    int was_color_input; /* 1 se a imagem original era colorida, 0 se já era cinza */
+    int was_color_input; // 1 se a imagem original era colorida, 0 se já era cinza
 
-    u8 *gray_original;   /* w*h bytes: escala de cinza obtida a partir do arquivo original */
-    u8 *gray_equalized;  /* w*h bytes: versão equalizada de gray_original (calculada sob demanda) */
-    int equalized_ready; /* 1 quando gray_equalized já foi calculado */
+    u8 *gray_original;   // w*h bytes: escala de cinza obtida a partir do arquivo original
+    u8 *gray_equalized;  // w*h bytes: versão equalizada de gray_original (calculada sob demanda)
+    int equalized_ready; // 1 quando gray_equalized já foi calculado
 } AppImage;
 
 /*
@@ -56,4 +55,4 @@ SDL_Surface *image_gray_to_surface(const u8 *gray, int width, int height);
 /* Libera os buffers internos de `img` (não libera a struct em si). */
 void image_free(AppImage *img);
 
-#endif /* PROJ_VISUAL_IMAGE_H */
+#endif
