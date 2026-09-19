@@ -1,9 +1,3 @@
-/*
- * main.c
- *
- * Proj1 - Processamento de imagens (Computação Visual, Mackenzie).
- * Uso: programa caminho_da_imagem.ext
- */
 #include <stdio.h>
 
 #include "gui.h"
@@ -27,7 +21,7 @@ int main(int argc, char *argv[]) {
     }
 
     if (!image_load_as_grayscale(argv[1], &image)) {
-        /* image_load_as_grayscale já imprime a mensagem de erro pertinente. */
+        // image_load_as_grayscale já imprime a mensagem de erro pertinente
         return 1;
     }
 
