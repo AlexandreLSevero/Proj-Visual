@@ -1,0 +1,22 @@
+# Artefatos de compilação — não devem ser versionados (ver Tabela 3 do
+# enunciado: arquivos/pastas intermediárias de compilação no repositório
+# geram penalidade de -1,0 ponto).
+build/
+*.o
+*.obj
+proj1
+proj1.exe
+
+# Saída gerada pelo programa (tecla S).
+output_image.png
+
+# Executável de testes unitários.
+tests/test_pixel_ops
+tests/test_pixel_ops.exe
+
+# Arquivos de IDE / SO comuns.
+.vscode/
+.vs/
+*.suo
+.DS_Store
+Thumbs.db
