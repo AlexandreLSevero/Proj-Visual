@@ -35,7 +35,7 @@ typedef struct {
 
     TTF_Font *font;
 
-    SDL_Texture *main_texture; /* imagem atual (cinza ou equalizada), resolução nativa */
+    SDL_Texture *main_texture; // imagem atual (cinza ou equalizada), resolução nativa
 
     int use_equalized;
     ResolutionMode res_mode;
@@ -50,13 +50,13 @@ typedef struct {
     Button btn_resolution;
 
     int mouse_down;
-    Button *pressed_button; /* botão sob o mouse no momento do clique inicial */
+    Button *pressed_button; // botão sob o mouse no momento do clique inicial
 
     int running;
 } AppState;
 
 /* ------------------------------------------------------------------ */
-/* Utilidades internas                                                 */
+/* Utilidades internas                                                */
 /* ------------------------------------------------------------------ */
 
 static void refresh_main_texture(AppState *app) {
@@ -143,7 +143,6 @@ static void main_window_apply_resolution(AppState *app) {
     mode = SDL_GetCurrentDisplayMode(display_id);
 
     if (mode != NULL && (target_w > mode->w || target_h > mode->h)) {
-        /* Excede a resolução do sistema: canto superior esquerdo em (0,0). */
         SDL_SetWindowPosition(app->main_window, 0, 0);
     } else {
         SDL_SetWindowPosition(app->main_window, SDL_WINDOWPOS_CENTERED_DISPLAY(display_id),
@@ -196,7 +195,7 @@ static void save_currently_displayed_image(AppState *app) {
 }
 
 /* ------------------------------------------------------------------ */
-/* Ações dos botões                                                     */
+/* Ações dos botões                                                   */
 /* ------------------------------------------------------------------ */
 
 static void on_click_equalize(AppState *app) {
@@ -226,7 +225,7 @@ static void on_click_resolution(AppState *app) {
 }
 
 /* ------------------------------------------------------------------ */
-/* Inicialização e limpeza                                             */
+/* Inicialização e limpeza                                            */
 /* ------------------------------------------------------------------ */
 
 static int app_init(AppState *app, AppImage *image) {
@@ -261,8 +260,7 @@ static int app_init(AppState *app, AppImage *image) {
         return 0;
     }
     SDL_SetWindowPosition(app->secondary_window, 0, 0);
-    /* Torna a janela secundária "filha" da janela principal, conforme
-     * pede o Item 3 do enunciado. */
+    // Torna a janela secundária "filha" da janela principal (conforme pede no item 3 do descritivo tecnico do projeto)
     SDL_SetWindowParent(app->secondary_window, app->main_window);
 
     app->secondary_renderer = SDL_CreateRenderer(app->secondary_window, NULL);
@@ -327,7 +325,7 @@ static void app_shutdown(AppState *app) {
 }
 
 /* ------------------------------------------------------------------ */
-/* Eventos                                                              */
+/* Eventos                                                            */
 /* ------------------------------------------------------------------ */
 
 static void handle_secondary_mouse_motion(AppState *app, float x, float y) {
@@ -375,7 +373,7 @@ static void process_events(AppState *app) {
                 break;
 
             case SDL_EVENT_WINDOW_CLOSE_REQUESTED:
-                /* Fechar qualquer uma das janelas encerra o programa. */
+                // Fechar qualquer uma das janelas encerra o programa.
                 app->running = 0;
                 break;
 
@@ -410,7 +408,7 @@ static void process_events(AppState *app) {
 }
 
 /* ------------------------------------------------------------------ */
-/* Renderização                                                        */
+/* Renderização                                                       */
 /* ------------------------------------------------------------------ */
 
 static void render_main_window(AppState *app) {
@@ -444,7 +442,7 @@ static void render_histogram(AppState *app) {
         }
     }
 
-    /* Moldura do histograma. */
+    // Moldura do histograma
     SDL_SetRenderDrawColor(app->secondary_renderer, 255, 255, 255, 255);
     {
         SDL_FRect frame = {HISTOGRAM_RECT_X, HISTOGRAM_RECT_Y, HISTOGRAM_RECT_W, HISTOGRAM_RECT_H};
@@ -491,7 +489,7 @@ static void render_secondary_window(AppState *app) {
 }
 
 /* ------------------------------------------------------------------ */
-/* Laço principal                                                       */
+/* Laço principal                                                     */
 /* ------------------------------------------------------------------ */
 
 int gui_run(AppImage *image) {
@@ -506,7 +504,7 @@ int gui_run(AppImage *image) {
         process_events(&app);
         render_main_window(&app);
         render_secondary_window(&app);
-        SDL_Delay(10); /* ~100 fps de teto: suficiente para uma UI simples */
+        SDL_Delay(10); // ~100 fps de teto: suficiente para uma UI simples */
     }
 
     app_shutdown(&app);
