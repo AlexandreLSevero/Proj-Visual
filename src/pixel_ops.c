@@ -11,7 +11,7 @@ u8 pixel_rgb_to_gray(u8 r, u8 g, u8 b) {
         y = 255.0;
     }
 
-    return (u8)(y + 0.5); /* arredondamento para o inteiro mais próximo */
+    return (u8)(y + 0.5); // arredondamento para o inteiro mais próximo
 }
 
 int pixel_is_gray(u8 r, u8 g, u8 b) {
@@ -88,7 +88,7 @@ void histogram_equalize(const u8 *src, u8 *dst, size_t count) {
     }
 
     if (count == 0 || cdf_min < 0 || (long)count == cdf_min) {
-        /* Imagem vazia ou de uma única cor: não há o que equalizar. */
+        // Imagem vazia ou de uma única cor: não há o que equalizar
         for (i = 0; i < count; i++) {
             dst[i] = src[i];
         }
