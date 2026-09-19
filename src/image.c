@@ -21,7 +21,7 @@ int image_load_as_grayscale(const char *path, AppImage *out) {
 
     /* IMG_Load já trata "arquivo não encontrado" e "formato inválido"
      * internamente: em ambos os casos retorna NULL e SDL_GetError()
-     * traz o motivo. */
+     * traz o motivo */
     loaded = IMG_Load(path);
     if (loaded == NULL) {
         fprintf(stderr, "Erro ao carregar a imagem \"%s\": %s\n", path, SDL_GetError());
@@ -30,7 +30,7 @@ int image_load_as_grayscale(const char *path, AppImage *out) {
 
     /* Normaliza para um formato de pixel conhecido (8 bits por canal,
      * com alfa) para simplificar a leitura pixel a pixel abaixo,
-     * independentemente do formato original do arquivo. */
+     * independentemente do formato original do arquivo */
     converted = SDL_ConvertSurface(loaded, SDL_PIXELFORMAT_RGBA32);
     SDL_DestroySurface(loaded);
     if (converted == NULL) {
@@ -72,7 +72,7 @@ int image_load_as_grayscale(const char *path, AppImage *out) {
             Uint8 r, g, b, a;
 
             SDL_GetRGBA(*pixel_ptr, fmt, NULL, &r, &g, &b, &a);
-            (void)a; /* transparência não faz parte do escopo deste projeto */
+            (void)a;
 
             if (!pixel_is_gray(r, g, b)) {
                 is_color = 1;
@@ -115,7 +115,7 @@ void image_equalize(AppImage *img) {
     size_t count = (size_t)img->width * (size_t)img->height;
 
     if (img->equalized_ready) {
-        return; /* já calculada; evita refazer o trabalho a cada clique */
+        return; // evita refazer o trabalho a cada clique 
     }
 
     if (img->gray_equalized == NULL) {
