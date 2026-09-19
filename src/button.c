@@ -2,8 +2,8 @@
 
 #include <string.h>
 
-/* Cores por estado, conforme sugerido no enunciado:
- * azul (neutro), azul claro (hover), azul escuro (clicado). */
+
+// Cores por estado: azul (neutro), azul claro (hover), azul escuro (clicado)
 static const SDL_Color COLOR_NEUTRO = {40, 90, 200, 255};
 static const SDL_Color COLOR_HOVER = {90, 140, 240, 255};
 static const SDL_Color COLOR_CLICADO = {20, 50, 130, 255};
@@ -23,12 +23,10 @@ void button_init(Button *btn, float x, float y, float w, float h, const char *la
     button_set_label(btn, label);
 }
 
+// A textura é recriada de forma preguiçosa em button_render, apenas quando o texto realmente muda (no label_texture_source)
 void button_set_label(Button *btn, const char *label) {
     strncpy(btn->label, label, sizeof(btn->label) - 1);
     btn->label[sizeof(btn->label) - 1] = '\0';
-    /* A textura é recriada de forma preguiçosa em button_render, apenas
-     * quando o texto realmente muda (ver comparação com
-     * label_texture_source). */
 }
 
 int button_contains(const Button *btn, float x, float y) {
@@ -68,8 +66,9 @@ static void button_rebuild_texture_if_needed(Button *btn, SDL_Renderer *renderer
         return;
     }
 
+    // texto não mudou: reaproveita a textura já criada
     if (strcmp(btn->label, btn->label_texture_source) == 0 && btn->label_texture != NULL) {
-        return; /* texto não mudou: reaproveita a textura já criada */
+        return;
     }
 
     if (btn->label_texture != NULL) {
