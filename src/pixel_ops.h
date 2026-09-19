@@ -1,6 +1,4 @@
 /*
- * pixel_ops.h
- *
  * Funções puras de processamento de imagem (escala de cinza, histograma,
  * estatísticas e equalização). Não dependem da SDL: trabalham apenas com
  * arrays de bytes (Uint8), o que permite testá-las isoladamente (ver
@@ -14,19 +12,19 @@
 
 typedef uint8_t u8;
 
-/* Número de níveis de intensidade (0..255) usados no histograma. */
+// Número de níveis de intensidade (0..255) usados no histograma
 #define HISTOGRAM_LEVELS 256
 
 typedef struct {
-    int counts[HISTOGRAM_LEVELS]; /* contagem de pixels por nível de cinza */
+    int counts[HISTOGRAM_LEVELS]; // contagem de pixels por nível de cinza
     size_t total_pixels;
-    double mean;   /* média de intensidade (0..255) */
-    double stddev; /* desvio padrão da intensidade */
+    double mean;   // média de intensidade (0..255)
+    double stddev; // desvio padrão da intensidade
 } Histogram;
 
 /*
  * Converte um pixel RGB para escala de cinza usando a fórmula ponderada
- * exigida pelo enunciado: Y = 0.2125*R + 0.7154*G + 0.0721*B.
+ * pedida pelo projeto: Y = 0.2125*R + 0.7154*G + 0.0721*B.
  * O resultado é arredondado e limitado ao intervalo [0, 255].
  */
 u8 pixel_rgb_to_gray(u8 r, u8 g, u8 b);
@@ -68,4 +66,4 @@ const char *histogram_classify_contrast(double stddev);
  */
 void histogram_equalize(const u8 *src, u8 *dst, size_t count);
 
-#endif /* PROJ_VISUAL_PIXEL_OPS_H */
+#endif
