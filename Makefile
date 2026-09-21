@@ -31,9 +31,9 @@ endif
 
 ifeq ($(DETECTED_OS),Windows)
     TARGET := $(TARGET_NAME).exe
-    RM := del /Q
-    RMDIR := rmdir /S /Q
-    MKDIR := if not exist $(BUILD_DIR) mkdir $(BUILD_DIR)
+    RM := rm -f
+    RMDIR := rm -rf
+    MKDIR := mkdir -p $(BUILD_DIR)
     PATHSEP := \\
 else
     TARGET := $(TARGET_NAME)
@@ -83,7 +83,7 @@ $(BUILD_DIR):
 
 # Executa o programa com uma imagem de exemplo (ajuste o caminho conforme necessário).
 run: $(TARGET)
-	./$(TARGET) assets/sample_images/sample.png
+	./$(TARGET) assets/sample_images/sample_color.png
 
 # Testes unitários das funções puras de processamento de imagem
 # (pixel_ops.c), sem dependência da SDL.
@@ -93,8 +93,8 @@ test:
 
 clean:
 ifeq ($(DETECTED_OS),Windows)
-	-$(RMDIR) $(BUILD_DIR) 2>nul
-	-$(RM) $(TARGET) 2>nul
+	-$(RMDIR) $(BUILD_DIR) 2>/dev/null
+	-$(RM) $(TARGET) 2>/dev/null
 else
 	-$(RMDIR) $(BUILD_DIR)
 	-$(RM) $(TARGET)
